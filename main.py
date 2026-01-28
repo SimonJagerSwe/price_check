@@ -14,8 +14,6 @@ p3 = "https://toolab.se/sv/products/dewalt-dcd791p2-borr-skruvdragare-18v-xr-kol
 p3_price = '//*[@id="product-price"]'
 p4 = "https://www.verktygsproffsen.se/maskiner-elverktyg/elhandverktyg/skruvdragare/dewalt-dcd791p2-skruvdragare-med-2-st-50-ah-batterier-och-laddare-jt11814-2"
 p4_price = '/html/body/div[2]/div/main/div/div[2]/div[2]/div/div[1]/div[4]/div/div[1]/span/span/span'
-screw_drivers_list = [p1, p2]
-screw_drivers_price_list = [p1_price, p2_price]
 screw_drivers_dict = {
     p1 : p1_price,
     p2 : p2_price,
@@ -26,51 +24,17 @@ screw_drivers_dict = {
 
 # Main function
 def main():
-    # screw_list = screw_drivers(p_list)
-    # print(screw_list)
-    print(screw_drivers_dict)
     prices = driver_dict(screw_drivers_dict, p_list, p_names)
-    print(prices)
+    print(f"Skruvdragare:\n{prices}")
 
 
-# Get browser
-def screw_drivers(p_list):
-    '''driver = webdriver.Chrome()
-    driver.get(p1)
-    price_1 = driver.find_element(By.XPATH, p1_price)
-    print(price_1.text)
-    print(type(price_1.text))
-    p_list.append(f"Hornbach: {price_1.text.strip("*")}")
-    driver.close()
-    driver = webdriver.Chrome()
-    driver.get(p2)
-    price_2 = driver.find_element(By.XPATH, p2_price)
-    print(price_2.text)
-    p_list.append(f"Bauhaus: {price_2.text}")
-    driver.close()
-    driver = webdriver.Chrome()
-    driver.get(p3)
-    price_3 = driver.find_element(By.XPATH, p3_price)
-    print(price_3.text)
-    p_list.append(f"Toolab: {price_3.text}")
-    driver.close()
-    driver = webdriver.Chrome()
-    driver.get(p4)
-    price_4 = driver.find_element(By.XPATH, p4_price)
-    print(price_4.text)
-    p_list.append(f"Verktygsproffsen: {price_4.text}")
-    driver.close()'''
-    return p_list
-
-
+# Create list of places and prices with dictionary comprehension
 def driver_dict(dict, p_list, p_names):  
     n = 0  
-    for key, value in dict.items():        
-        print(f"{key} : {value}\n")
+    for key, value in dict.items():
         driver = webdriver.Chrome()
         driver.get(key)
         price = driver.find_element(By.XPATH, value)
-        print(price.text)
         p_list.append(f"{p_names[n]}: {price.text}")
         n += 1
     
