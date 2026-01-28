@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 # Links
 p_list = []
+p_names = ["Hornbach", "Bauhaus", "Toolab", "Verktygsproffsen"]
 p1 = "https://www.hornbach.se/p/batteridriven-borrskruvdragare-dewalt-dcd791p2-18v-inkl-2x5-0ah-batterier-och-laddare-samt-tstak/6053746/"
 p1_price = "/html/body/div[3]/div/main/div[2]/div[1]/section/section/div[2]/div/div/span[2]/span"
 p2 = "https://www.bauhaus.se/skruvdragare-dewalt-dcd791p2-qw-18v-2x5-0ah"
@@ -25,17 +26,20 @@ screw_drivers_dict = {
 
 # Main function
 def main():
-    screw_list = screw_drivers(p_list)
-    print(screw_list)
+    # screw_list = screw_drivers(p_list)
+    # print(screw_list)
     print(screw_drivers_dict)
+    prices = driver_dict(screw_drivers_dict, p_list, p_names)
+    print(prices)
 
 
 # Get browser
 def screw_drivers(p_list):
-    driver = webdriver.Chrome()
+    '''driver = webdriver.Chrome()
     driver.get(p1)
     price_1 = driver.find_element(By.XPATH, p1_price)
     print(price_1.text)
+    print(type(price_1.text))
     p_list.append(f"Hornbach: {price_1.text.strip("*")}")
     driver.close()
     driver = webdriver.Chrome()
@@ -55,7 +59,21 @@ def screw_drivers(p_list):
     price_4 = driver.find_element(By.XPATH, p4_price)
     print(price_4.text)
     p_list.append(f"Verktygsproffsen: {price_4.text}")
-    driver.close()
+    driver.close()'''
+    return p_list
+
+
+def driver_dict(dict, p_list, p_names):  
+    n = 0  
+    for key, value in dict.items():        
+        print(f"{key} : {value}\n")
+        driver = webdriver.Chrome()
+        driver.get(key)
+        price = driver.find_element(By.XPATH, value)
+        print(price.text)
+        p_list.append(f"{p_names[n]}: {price.text}")
+        n += 1
+    
     return p_list
 
 # Execute main function
