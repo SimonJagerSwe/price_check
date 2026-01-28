@@ -4,8 +4,6 @@ from selenium.webdriver.common.by import By
 
 
 # Links
-p_list = []
-p_names = ["Hornbach", "Bauhaus", "Toolab", "Verktygsproffsen"]
 p1 = "https://www.hornbach.se/p/batteridriven-borrskruvdragare-dewalt-dcd791p2-18v-inkl-2x5-0ah-batterier-och-laddare-samt-tstak/6053746/"
 p1_price = "/html/body/div[3]/div/main/div[2]/div[1]/section/section/div[2]/div/div/span[2]/span"
 p2 = "https://www.bauhaus.se/skruvdragare-dewalt-dcd791p2-qw-18v-2x5-0ah"
@@ -14,6 +12,10 @@ p3 = "https://toolab.se/sv/products/dewalt-dcd791p2-borr-skruvdragare-18v-xr-kol
 p3_price = '//*[@id="product-price"]'
 p4 = "https://www.verktygsproffsen.se/maskiner-elverktyg/elhandverktyg/skruvdragare/dewalt-dcd791p2-skruvdragare-med-2-st-50-ah-batterier-och-laddare-jt11814-2"
 p4_price = '/html/body/div[2]/div/main/div/div[2]/div[2]/div/div[1]/div[4]/div/div[1]/span/span/span'
+
+# Collectors
+p_list = []
+p_names = ["Hornbach", "Bauhaus", "Toolab", "Verktygsproffsen"]
 screw_drivers_dict = {
     p1 : p1_price,
     p2 : p2_price,
