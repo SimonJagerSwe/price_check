@@ -1,6 +1,5 @@
 # Imports
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 
@@ -16,17 +15,23 @@ p4 = "https://www.verktygsproffsen.se/maskiner-elverktyg/elhandverktyg/skruvdrag
 p4_price = '/html/body/div[2]/div/main/div/div[2]/div[2]/div/div[1]/div[4]/div/div[1]/span/span/span'
 screw_drivers_list = [p1, p2]
 screw_drivers_price_list = [p1_price, p2_price]
+screw_drivers_dict = {
+    p1 : p1_price,
+    p2 : p2_price,
+    p3 : p3_price,
+    p4 : p4_price
+}
 
 
 # Main function
 def main():
     screw_list = screw_drivers(p_list)
     print(screw_list)
+    print(screw_drivers_dict)
 
 
 # Get browser
 def screw_drivers(p_list):
-    n = 0
     driver = webdriver.Chrome()
     driver.get(p1)
     price_1 = driver.find_element(By.XPATH, p1_price)
